@@ -16,7 +16,7 @@ class FormularioActivity : AppCompatActivity() {
         binding.attendeesSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, progress: Int, fromUser: Boolean) {
                 val numAttendees = progress
-                //numAttendeesTextView.text = numAttendees.toString()
+                binding.attendeesNum.text = numAttendees.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {

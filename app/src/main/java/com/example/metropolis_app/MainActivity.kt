@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnEspacios.setOnClickListener{
             goTo(Intent(this, EspaciosActivity ::class.java))
         }
+        binding.btnReservas.setOnClickListener{
+            goTo(Intent(this, FormularioActivity ::class.java))
+        }
     }
 
     private fun goTo(intent: Intent){

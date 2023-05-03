@@ -37,14 +37,28 @@
         android:text="Asistents"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname"/>
+
+
+    <TextView
+        android:id="@+id/attendees_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x1"
+        android:layout_marginTop="@dimen/x3"
+        android:text="500"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:layout_marginHorizontal="@dimen/x4"
+        android:layout_marginTop="@dimen/x3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/attendees_num"
+        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname">
 
         <SeekBar
             android:id="@+id/attendeesSeekBar"
