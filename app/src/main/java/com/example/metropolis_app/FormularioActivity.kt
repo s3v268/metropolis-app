@@ -12,19 +12,17 @@ class FormularioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.attendeesSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, progress: Int, fromUser: Boolean) {
-                val numAttendees = progress
-                binding.attendeesNum.text = numAttendees.toString()
+                binding.attendeesNum.text = progress.toString()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
-                TODO("Not yet implemented")
+                //--
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                TODO("Not yet implemented")
+                //---
             }
 
         })
