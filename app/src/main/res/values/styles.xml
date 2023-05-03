@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="st_custom_ed" parent="">
+        <item name="android:layout_height">@dimen/x8</item>
+        <item name="android:background">@drawable/custom_ed</item>
+        <item name="android:paddingStart">@dimen/x2</item>
+        <item name="android:layout_marginRight">@dimen/x3</item>
+        <item name="android:layout_marginLeft">@dimen/x3</item>
+        <item name="android:drawablePadding">@dimen/x2</item>
+        <item name="android:textCursorDrawable">@drawable/custom_ed_cursor</item>
+    </style>
+</resources>
