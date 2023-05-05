@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">metropolis-app</string>
+    <string name="espacios_sp_prompt">Seleccionar</string>
 </resources>

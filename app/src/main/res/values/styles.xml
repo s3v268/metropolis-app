@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="st_custom_ed" parent="">
-        <item name="android:layout_height">@dimen/x8</item>
+        <item name="android:layout_height">@dimen/x6</item>
         <item name="android:background">@drawable/custom_ed</item>
         <item name="android:paddingStart">@dimen/x2</item>
         <item name="android:layout_marginRight">@dimen/x3</item>
@@ -9,4 +9,12 @@
         <item name="android:drawablePadding">@dimen/x2</item>
         <item name="android:textCursorDrawable">@drawable/custom_ed_cursor</item>
     </style>
+
+    <style name="TransparentDatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="colorAccent">@color/primary_color</item>
+    </style>
+
 </resources>

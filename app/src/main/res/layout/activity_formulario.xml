@@ -28,37 +28,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_form_email" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x3"
-        android:layout_marginTop="@dimen/x3"
+        android:layout_marginTop="16dp"
         android:text="Asistents"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname"/>
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
 
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:prompt="@string/espacios_sp_prompt"
+        android:layout_marginLeft="@dimen/x3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/attendees_num"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x1"
-        android:layout_marginTop="@dimen/x3"
-        android:text="0"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        android:layout_marginTop="16dp"
+        android:text="Espacio"
+        android:layout_marginLeft="@dimen/x3"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fechas"
+        android:layout_marginTop="@dimen/x2"
+        android:layout_marginLeft="@dimen/x3"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/tv_fechainicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="23/03/23"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/tv_fechafinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--/--/--"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_fechainicio"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/x4"
-        android:layout_marginTop="@dimen/x3"
+        android:layout_marginRight="@dimen/x3"
+        android:layout_marginTop="@dimen/x1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/attendees_num"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname">
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <!--android:background="@drawable/indicator_background"-->
+        <TextView
+            android:id="@+id/indicatorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_sb_indicator"
+            android:paddingHorizontal="@dimen/x1"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/attendeesSeekBar"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
             android:id="@+id/attendeesSeekBar"
@@ -66,30 +128,20 @@
             android:layout_height="wrap_content"
             android:max="50"
             android:progress="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/seekbar_max"
-            app:layout_constraintStart_toEndOf="@+id/seekbar_min"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/seekbar_max"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50"
-            android:textSize="20dp"
+            android:progressTint="@color/primary_color"
+            android:thumbTint="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/seekbar_min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
