@@ -1,18 +1,22 @@
-package com.example.metropolis_app
+package com.example.metropolis_app.formulario
 
 import com.example.metropolis_app.R
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
+import android.widget.CalendarView
 import android.widget.CheckBox
 import android.widget.DatePicker
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
+import com.example.metropolis_app.espacios.EspaciosActivity
 import java.util.Calendar
 
 class FormularioActivity : AppCompatActivity() {
@@ -30,12 +34,20 @@ class FormularioActivity : AppCompatActivity() {
         configureSpinner()
         configureSeekBar()
         configureDatePickerDialog()
+        val calendarView = findViewById<CalendarView>(R.id.calendarView)
+        //calendarView.minDate = System.currentTimeMillis()
+        calendarView.setDate(Calendar.getInstance().timeInMillis)
+        // Disable May 6th
+        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            if (month == Calendar.MAY && dayOfMonth == 6) {
+                Toast.makeText(this, "May 6th is disabled", Toast.LENGTH_SHORT).show()
+                calendarView.setDate(Calendar.getInstance().timeInMillis) // Set the current date as selected
+            }
+        }
+
     }
 
 
-    private fun configureCheckbox(){
-
-    }
     private fun configureSpinner() {
         val spinner = binding.spinner
         val items = arrayOf("--", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")

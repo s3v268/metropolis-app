@@ -14,10 +14,13 @@
         android:theme="@style/Theme.Metropolisapp"
         tools:targetApi="31">
         <activity
-            android:name=".FormularioActivity"
+            android:name=".formulario.FormularioActivity"
             android:exported="false" />
         <activity
             android:name=".espacios.EspaciosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".formulario.Formtest"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

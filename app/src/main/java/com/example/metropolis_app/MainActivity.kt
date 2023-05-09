@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.metropolis_app.databinding.ActivityMainBinding
 import com.example.metropolis_app.espacios.EspaciosActivity
+import com.example.metropolis_app.formulario.FormularioActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
