@@ -9,4 +9,5 @@ class EspaciosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_espacios)
     }
+    //empezar a crear el recycler view
 }

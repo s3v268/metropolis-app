@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metropolis_app.R
+import com.example.metropolis_app.models.Espacio
 
-/*class EspaciosAdapter(
-    //var espacios: List</*Espacio*/> = emptyList(),
+ class EspaciosAdapter(
+    var espacios: List<Espacio> = emptyList(),
     private val mContext: Context,
-    private val onItemClicked: (/*Espacio*/) -> Unit
+    private val onItemClicked: (Espacio) -> Unit
 ) : RecyclerView.Adapter<EspaciosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EspaciosViewHolder {
@@ -24,15 +25,14 @@ import com.example.metropolis_app.R
     override fun onBindViewHolder(viewHolder: EspaciosViewHolder, position: Int) {
 
         val espacio = espacios[position]
-        viewHolder.bind(/*espacio*/)
+        viewHolder.bind(espacio)
 
 
         //para capturar el click en el elemento
-        //viewHolder.itemView.setOnClickListener { onItemClicked(espacio) }
+        viewHolder.itemView.setOnClickListener { onItemClicked(espacio) }
 
     }
 
-   // override fun getItemCount(): Int = espacio.size
+    override fun getItemCount(): Int = espacios.size
 
-
-}*/
+}
