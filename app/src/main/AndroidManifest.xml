@@ -19,9 +19,7 @@
         <activity
             android:name=".espacios.EspaciosActivity"
             android:exported="false" />
-        <activity
-            android:name=".formulario.Formtest"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
