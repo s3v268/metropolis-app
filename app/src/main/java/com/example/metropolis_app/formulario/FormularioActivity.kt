@@ -8,9 +8,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.SeekBar
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorRes
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
 import com.example.metropolis_app.espacios.EspaciosActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -28,13 +31,36 @@ class FormularioActivity : AppCompatActivity() {
     }
 
     private fun configureView() {
+        configureForm()
         configureSpinner()
         configureSeekBar()
-        configureDatePickerDialog()
         configureCalendarView()
         configureMaterialCalendar()
     }
 
+    private fun configureForm() {
+        ed_changecolor_onfocus(binding.edFormEmail, R.color.primary_color, R.color.light_gray)
+        ed_changecolor_onfocus(binding.edFormCompanyName, R.color.primary_color, R.color.light_gray)
+    }
+
+    private fun spinner_changecolor_onfocus(sp: Spinner, @ColorRes focusedColor: Int, @ColorRes unfocusedColor: Int){
+        sp.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+
+            } else {
+
+            }
+        }
+    }
+    private fun ed_changecolor_onfocus(ed: EditText, @ColorRes focusedColor: Int, @ColorRes unfocusedColor: Int){
+        ed.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                (view as EditText).compoundDrawablesRelative[0].setTint(getColor(focusedColor))
+            } else {
+                (view as EditText).compoundDrawablesRelative[0].setTint(getColor(unfocusedColor))
+            }
+        }
+    }
     private fun configureMaterialCalendar() {
         val builder = MaterialDatePicker.Builder.dateRangePicker()
         val now = Calendar.getInstance()
@@ -66,7 +92,7 @@ class FormularioActivity : AppCompatActivity() {
 
     private fun configureSpinner() {
         val spinner = binding.spinner
-        val items = arrayOf("--", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
+        val items = arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
@@ -90,14 +116,6 @@ class FormularioActivity : AppCompatActivity() {
         })
     }
 
-    fun configureDatePickerDialog() {
-        binding.tvFechainicio.setOnClickListener{
-            createDatePickerDialog(it as TextView)
-        }
-        binding.tvFechafinal.setOnClickListener{
-            createDatePickerDialog(it as TextView)
-        }
-    }
 
     private fun createDatePickerDialog( dateTv: TextView){
         val calendar = Calendar.getInstance()

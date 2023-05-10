@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--EDIT TEXT-->
     <style name="st_custom_ed" parent="">
         <item name="android:layout_height">@dimen/x6</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/custom_ed</item>
         <item name="android:paddingStart">@dimen/x2</item>
         <item name="android:layout_marginRight">@dimen/x3</item>
@@ -10,6 +12,7 @@
         <item name="android:textCursorDrawable">@drawable/custom_ed_cursor</item>
     </style>
 
+    <!--CALENDARIO-->
     <style name="CustomDatePickerDialogTheme" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
@@ -29,6 +32,11 @@
 
     <style name="CustomMonthNavigationButton" parent="Widget.MaterialComponents.MaterialCalendar.MonthNavigationButton">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--SPINNER-->
+    <style name="SpinnerPrompt" parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/light_gray</item>
     </style>
 
 </resources>

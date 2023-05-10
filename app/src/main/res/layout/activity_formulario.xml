@@ -7,6 +7,40 @@
     tools:context=".formulario.FormularioActivity">
 
 
+    <TextView
+        android:id="@+id/tv_form_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x1"
+        android:gravity="center"
+        android:text="Formulario de reserva"
+        android:textSize="@dimen/x6"
+        android:textStyle="bold"
+        android:textColor="@color/primary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ed_form_email"
+        style="@style/st_custom_ed"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="Email"
+        android:layout_marginTop="@dimen/x3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_form_title" />
+
+    <EditText
+        android:id="@+id/ed_form_company_name"
+        style="@style/st_custom_ed"
+        android:layout_marginTop="@dimen/x2"
+        android:drawableStart="@drawable/ic_business"
+        android:hint="Nom companyia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_form_email" />
+
     <Button
         android:id="@+id/selectDate_btn"
         android:layout_width="wrap_content"
@@ -15,15 +49,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="DATE"
         app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/x3"
         android:layout_marginTop="@dimen/x3"
+        android:layout_marginHorizontal="@dimen/x3"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fechainicio">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <CheckBox
             android:id="@+id/bus_pass_checkbox"
@@ -54,108 +89,109 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/ed_form_email"
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         style="@style/st_custom_ed"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/x2"
-        android:drawableStart="@drawable/custom_ic_email"
-        android:hint="Email"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x3"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_form_company_name">
 
-    <EditText
-        android:id="@+id/ed_form_cname"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:paddingEnd="@dimen/x1"
+            android:src="@drawable/ic_bedroom" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textColorHint="@color/light_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_form_company_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         style="@style/st_custom_ed"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/x2"
-        android:drawableStart="@drawable/custom_ic_email"
-        android:hint="Nom companyia"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/x3"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_email" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:paddingEnd="@dimen/x1"
+            android:src="@drawable/ic_calendar" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Asistents"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="De"
+            android:textSize="@dimen/x2"
+            android:layout_marginLeft="@dimen/x1"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="02/22/22"
+            android:textSize="@dimen/x2"
+            android:layout_marginLeft="@dimen/x2"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hasta"
+            android:textSize="@dimen/x2"
+            android:layout_marginLeft="@dimen/x2"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="02/22/22"
+            android:textSize="@dimen/x2"
+            android:layout_marginLeft="@dimen/x2"
+            android:textColor="@color/black"
+            android:gravity="center"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:paddingEnd="@dimen/x1"
+            android:layout_marginLeft="@dimen/x2"
+            android:src="@drawable/ic_edit"
+            android:layout_gravity="center_vertical" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:prompt="@string/espacios_sp_prompt"
-        android:layout_marginLeft="@dimen/x3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Espacio"
-        android:layout_marginLeft="@dimen/x3"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x3"
-        android:layout_marginTop="@dimen/x2"
-        android:text="Fechas"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <TextView
-        android:id="@+id/tv_fechainicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="23/03/23"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/tv_fechafinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="--/--/--"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
         android:layout_marginRight="@dimen/x3"
-        android:layout_marginTop="@dimen/x1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <!--android:background="@drawable/indicator_background"-->
         <TextView
