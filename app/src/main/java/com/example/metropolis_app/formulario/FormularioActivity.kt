@@ -8,15 +8,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
-import android.widget.CalendarView
-import android.widget.CheckBox
-import android.widget.DatePicker
-import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
 import com.example.metropolis_app.espacios.EspaciosActivity
+import com.google.android.material.datepicker.MaterialDatePicker
 import java.util.Calendar
 
 class FormularioActivity : AppCompatActivity() {
@@ -34,6 +31,26 @@ class FormularioActivity : AppCompatActivity() {
         configureSpinner()
         configureSeekBar()
         configureDatePickerDialog()
+        configureCalendarView()
+        configureMaterialCalendar()
+    }
+
+    private fun configureMaterialCalendar() {
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
+        val now = Calendar.getInstance()
+        builder.setSelection(androidx.core.util.Pair(now.timeInMillis, now.timeInMillis))
+        builder.setTheme(R.style.CustomTheme)
+        val picker = builder.build()
+
+        binding.selectDateBtn.setOnClickListener{
+            picker.show(this.supportFragmentManager!!, picker.toString())
+        }
+
+
+    }
+
+    private fun configureCalendarView() {
+        /*
         val calendarView = findViewById<CalendarView>(R.id.calendarView)
         //calendarView.minDate = System.currentTimeMillis()
         calendarView.setDate(Calendar.getInstance().timeInMillis)
@@ -43,8 +60,7 @@ class FormularioActivity : AppCompatActivity() {
                 Toast.makeText(this, "May 6th is disabled", Toast.LENGTH_SHORT).show()
                 calendarView.setDate(Calendar.getInstance().timeInMillis) // Set the current date as selected
             }
-        }
-
+        }*/
     }
 
 

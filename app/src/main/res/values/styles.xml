@@ -16,6 +16,19 @@
         <item name="android:colorBackground">@android:color/transparent</item>
     </style>
 
+    <style name="CustomTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="materialCalendarStyle">@style/CustomCalendar</item>
+    </style>
 
+    <style name="CustomCalendar" parent="Widget.MaterialComponents.MaterialCalendar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:headerMonthTextAppearance">@style/CustomMonthNavigationButton</item>
+    </style>
+
+    <style name="CustomMonthNavigationButton" parent="Widget.MaterialComponents.MaterialCalendar.MonthNavigationButton">
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>
