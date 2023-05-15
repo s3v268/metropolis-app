@@ -51,6 +51,7 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
+
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
@@ -60,9 +61,11 @@ dependencies {
     // Spinner del glide
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-    //lifecycle
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
-    //implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+
 
 
 
