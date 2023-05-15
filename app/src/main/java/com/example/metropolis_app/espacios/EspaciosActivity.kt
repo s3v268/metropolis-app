@@ -13,11 +13,12 @@ import java.io.InputStream
 
 class EspaciosActivity : AppCompatActivity() {
     private var espacios: MutableList<Espacio> = ArrayList()
-
-    //Creamos el adapter del recyclerView
-    private val espaciosAdapter: EspaciosAdapter = EspaciosAdapter(emptyList(), this)
-
+    private val espaciosViewModel: EspaciosViewModel = EspaciosViewModel()
     private lateinit var binding: ActivityEspaciosBinding
+
+    // Creamos el adapter del recyclerView
+    private val adapter = EspaciosAdapter(emptyList(),this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_espacios)
@@ -26,12 +27,27 @@ class EspaciosActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        // Cargar el array y hacer la llamda a la API
+        espaciosViewModel.loadEspacios()
 
-        binding.rvEspacios.adapter = espaciosAdapter
+        binding.rvEspacios.adapter = adapter
 
-        // Cargamos los datos en el adapter
-        espaciosAdapter.espacios = espacios
-        espaciosAdapter.notifyDataSetChanged()
+
+
+        // Nos suscribimos al loading de viewModel
+        espaciosViewModel.espacios.observe(this) {
+            adapter.espacios = it
+            adapter.notifyDataSetChanged()
+        }
+
+
+
+
+
+
+
+
+
 
 
     }
