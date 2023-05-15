@@ -4,192 +4,290 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/custom_layer_racefade"
     tools:context=".formulario.FormularioActivity">
 
-
-    <Button
-        android:id="@+id/selectDate_btn"
+    <ImageView
+        android:id="@+id/reservas_img_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="DATE"
-        app:layout_constraintStart_toStartOf="parent" />
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/x3"
-        android:layout_marginTop="@dimen/x3"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_fechainicio">
-
-        <CheckBox
-            android:id="@+id/bus_pass_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onBusPassCheckboxClicked"
-            android:text="Bus Passes" />
-
-        <LinearLayout
-            android:id="@+id/bus_pass_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount? (Max: 60)" />
-
-            <EditText
-                android:id="@+id/bus_pass_edittext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/ed_form_email"
-        style="@style/st_custom_ed"
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/x2"
-        android:drawableStart="@drawable/custom_ic_email"
-        android:hint="Email"
+        android:layout_height="0dp"
+        android:src="@drawable/logo_hort_negativo_color"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ed_form_cname"
-        style="@style/st_custom_ed"
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/x2"
-        android:drawableStart="@drawable/custom_ic_email"
-        android:hint="Nom companyia"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_email" />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Asistents"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
-
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:prompt="@string/espacios_sp_prompt"
-        android:layout_marginLeft="@dimen/x3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Espacio"
-        android:layout_marginLeft="@dimen/x3"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_form_cname" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x3"
-        android:layout_marginTop="@dimen/x2"
-        android:text="Fechas"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <TextView
-        android:id="@+id/tv_fechainicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="23/03/23"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/tv_fechafinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="--/--/--"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/x3"
-        android:layout_marginTop="@dimen/x1"
+        android:layout_marginHorizontal="@dimen/x1"
+        android:background="@drawable/custom_form_shape"
+        android:minHeight="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <!--android:background="@drawable/indicator_background"-->
-        <TextView
-            android:id="@+id/indicatorTextView"
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:id="@+id/reservas_ed_email"
+            style="@style/st_custom_ed"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:layout_marginTop="@dimen/x3"
+            android:drawableStart="@drawable/ic_email"
+            android:hint="Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/reservas_ed_companyname"
+            style="@style/st_custom_ed"
+            android:layout_marginTop="@dimen/x2"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:drawableStart="@drawable/ic_business"
+            android:hint="Nom companyia"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_ed_email" />
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_espacios"
+            style="@style/st_custom_ed"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_sb_indicator"
-            android:paddingHorizontal="@dimen/x1"
-            android:text="0"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/attendeesSeekBar"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_ed_companyname">
 
-        <SeekBar
-            android:id="@+id/attendeesSeekBar"
+            <ImageView
+                android:id="@+id/reservas_icon_espacios"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_bedroom" />
+
+            <Spinner
+                android:id="@+id/reservas_spinner_espacios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:textColorHint="@color/light_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_asistentes"
+            style="@style/st_custom_ed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:max="50"
-            android:progress="0"
-            android:progressTint="@color/primary_color"
-            android:thumbTint="@color/primary_color"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
+
+            <ImageView
+                android:id="@+id/reservas_icon_asistentes"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_person" />
+
+            <EditText
+                android:id="@+id/reservas_ed_asistentes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:layout_marginRight="@dimen/x1"
+                android:hint="Assistents"
+                android:minWidth="50dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_staffpass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:layout_marginTop="@dimen/x3"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_asistentes">
+
+            <CheckBox
+                android:id="@+id/reservas_check_staffpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff Pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_staffpass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_buspass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x1"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
+
+            <CheckBox
+                android:id="@+id/reservas_check_buspass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bus Pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_buspass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_parkingpass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:layout_marginTop="@dimen/x3"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_buspass">
+
+            <CheckBox
+                android:id="@+id/reservas_check_parkingpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parking pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_parkingpass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reservas_layout_datepicker"
+            style="@style/st_custom_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_espacios">
+
+            <ImageView
+                android:id="@+id/reservas_start_icon_datepicker"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_calendar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:gravity="center"
+                android:text="De"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x2" />
+
+            <TextView
+                android:id="@+id/reservas_tv_startdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x2"
+                android:gravity="center"
+                android:text="02/22/22"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x2"
+                android:gravity="center"
+                android:text="hasta"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x2" />
+
+            <TextView
+                android:id="@+id/reservas_tv_lastdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x2"
+                android:gravity="center"
+                android:text="02/22/22"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x2" />
+
+            <ImageView
+                android:id="@+id/reservas_end_icon_datepicker"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x2"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/reservas_btn_submit"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginRight="@dimen/x3"
+            android:text="hacer reserva"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_parkingpass" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
