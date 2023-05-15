@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Set the background color to white with an opacity of 50% -->
+    <solid android:color="#99FFFFFF" />
+
+    <!-- Set the corner radii to round the top left and top right corners -->
+    <corners android:topLeftRadius="20dp"
+        android:topRightRadius="20dp" />
+
+</shape>

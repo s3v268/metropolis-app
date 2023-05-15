@@ -20,7 +20,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import java.util.Calendar
 
 class FormularioActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityFormularioBinding
+    private lateinit var binding: ActivityFormularioBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
@@ -33,17 +33,20 @@ class FormularioActivity : AppCompatActivity() {
     private fun configureView() {
         configureForm()
         configureSpinner()
-        configureSeekBar()
         configureCalendarView()
         configureMaterialCalendar()
     }
 
     private fun configureForm() {
-        ed_changecolor_onfocus(binding.edFormEmail, R.color.primary_color, R.color.light_gray)
-        ed_changecolor_onfocus(binding.edFormCompanyName, R.color.primary_color, R.color.light_gray)
+        ed_changecolor_onfocus(binding.reservasEdEmail, R.color.primary_color, R.color.light_gray)
+        ed_changecolor_onfocus(binding.reservasEdCompanyname, R.color.primary_color, R.color.light_gray)
     }
 
-    private fun spinner_changecolor_onfocus(sp: Spinner, @ColorRes focusedColor: Int, @ColorRes unfocusedColor: Int){
+    private fun spinner_changecolor_onfocus(
+        sp: Spinner,
+        @ColorRes focusedColor: Int,
+        @ColorRes unfocusedColor: Int
+    ) {
         sp.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
 
@@ -52,7 +55,12 @@ class FormularioActivity : AppCompatActivity() {
             }
         }
     }
-    private fun ed_changecolor_onfocus(ed: EditText, @ColorRes focusedColor: Int, @ColorRes unfocusedColor: Int){
+
+    private fun ed_changecolor_onfocus(
+        ed: EditText,
+        @ColorRes focusedColor: Int,
+        @ColorRes unfocusedColor: Int
+    ) {
         ed.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 (view as EditText).compoundDrawablesRelative[0].setTint(getColor(focusedColor))
@@ -61,6 +69,7 @@ class FormularioActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun configureMaterialCalendar() {
         val builder = MaterialDatePicker.Builder.dateRangePicker()
         val now = Calendar.getInstance()
@@ -68,7 +77,9 @@ class FormularioActivity : AppCompatActivity() {
         builder.setTheme(R.style.CustomTheme)
         val picker = builder.build()
 
-        binding.selectDateBtn.setOnClickListener{
+
+
+        binding.reservasLayoutDatepicker.setOnClickListener {
             picker.show(this.supportFragmentManager!!, picker.toString())
         }
 
@@ -91,63 +102,38 @@ class FormularioActivity : AppCompatActivity() {
 
 
     private fun configureSpinner() {
-        val spinner = binding.spinner
-        val items = arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
+        val spinner = binding.reservasSpinnerEspacios
+        val items =
+            arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
     }
 
-    private fun configureSeekBar() {
-        binding.attendeesSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(p0: SeekBar?, progress: Int, fromUser: Boolean) {
-                val thumbRect = binding.attendeesSeekBar.thumb.bounds
-                val thumbOffset = thumbRect.left + thumbRect.width() / 2
-                binding.indicatorTextView.text = progress.toString()
-                binding.indicatorTextView.x = binding.attendeesSeekBar.x + thumbOffset - binding.indicatorTextView.width / 2
-            }
 
-            override fun onStartTrackingTouch(p0: SeekBar?) {
-                binding.indicatorTextView.visibility = View.VISIBLE
-            }
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-            }
-        })
-    }
-
-
-    private fun createDatePickerDialog( dateTv: TextView){
+    private fun createDatePickerDialog(dateTv: TextView) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         //para quitar el spinner mode quitar el stylo de los parametros i las 3 lineas de abajo
-        val datePickerDialog = DatePickerDialog(this, R.style.CustomDatePickerDialogTheme, { _, year, month, dayOfMonth ->
-            val date = "$dayOfMonth/${month + 1}/$year"
-            dateTv.text = date
-        }, year, month, day)
+        val datePickerDialog = DatePickerDialog(
+            this,
+            R.style.CustomDatePickerDialogTheme,
+            { _, year, month, dayOfMonth ->
+                val date = "$dayOfMonth/${month + 1}/$year"
+                dateTv.text = date
+            },
+            year,
+            month,
+            day
+        )
 
         datePickerDialog.datePicker.calendarViewShown = false
 
         datePickerDialog.show()
     }
-
-    fun onBusPassCheckboxClicked(view: View) {
-        val busPassCheckbox = binding.busPassCheckbox
-        val busPassContainer = binding.busPassContainer
-        if (busPassCheckbox.isChecked) {
-            // Checkbox is checked, show the associated views
-            busPassContainer.visibility = View.VISIBLE
-            // Add animation to show the container
-            val animation = AnimationUtils.loadAnimation(this, R.anim.slide_in_up)
-            busPassContainer.startAnimation(animation)
-        } else {
-            // Checkbox is unchecked, hide the associated views
-            busPassContainer.visibility = View.GONE
-        }
-        }
-    }
+}
 
 
