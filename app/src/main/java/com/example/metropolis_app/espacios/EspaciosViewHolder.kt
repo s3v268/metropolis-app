@@ -11,7 +11,9 @@ class EspaciosViewHolder(val view: View, val mContext: Context) : RecyclerView.V
     private val binding = ItemEspaciosBinding.bind(view)
 
     fun bind( espacio: Espacio) {
-
+        binding.tvNombre.text = espacio.nombre
+        binding.tvArea.text = espacio.area.toString()
+        binding.tvCapacidad.text = espacio.capacidad.toString()
 
     }
 }
