@@ -10,12 +10,22 @@ object ApiConnection {
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
-            .addInterceptor(this).build()
+            .addInterceptor(this)
+            // Agregar el interceptor de autenticación
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .header("Authorization", "Bearer " + "BocA8RrpqfAd38lq4oEdAYeK1qIAkn5MhIZ5Xzmv")
+                    .build()
+                chain.proceed(request)
+            }
+
+
+            .build()
 
     }
 
     private val builder = Retrofit.Builder()
-        .baseUrl("http://192.168.56.1:80/api/")
+        .baseUrl("http://10.0.2.2/metropolis-cdc/public/api/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
