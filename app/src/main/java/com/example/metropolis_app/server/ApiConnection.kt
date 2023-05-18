@@ -12,14 +12,14 @@ object ApiConnection {
         OkHttpClient.Builder()
             .addInterceptor(this)
             // Agregar el interceptor de autenticación
-            /*.addInterceptor { chain ->
+            .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
                     .header("Authorization", "Bearer " + "BocA8RrpqfAd38lq4oEdAYeK1qIAkn5MhIZ5Xzmv")
                     .build()
                 chain.proceed(request)
             }
 
-             */
+
             .build()
 
     }
