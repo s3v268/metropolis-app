@@ -15,7 +15,7 @@ object ApiConnection {
     }
 
     private val builder = Retrofit.Builder()
-        .baseUrl("https://http://metropolis-cdc.test/api/")
+        .baseUrl("http://192.168.56.1:80/api/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

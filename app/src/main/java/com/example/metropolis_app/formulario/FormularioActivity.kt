@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
@@ -14,28 +15,70 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.lifecycle.ViewModelProvider
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
 import com.example.metropolis_app.espacios.EspaciosActivity
+import com.example.metropolis_app.models.Reserva
+import com.example.metropolis_app.server.ApiConnection
+import com.example.metropolis_app.server.ApiConnection.service
 import com.google.android.material.datepicker.MaterialDatePicker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import java.io.IOException
 import java.util.Calendar
+import java.util.Date
 
 class FormularioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormularioBinding
+    private lateinit var viewModel: FormularioViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
+        viewModel = FormularioViewModel()
         setContentView(binding.root)
 
         configureView()
-
     }
 
     private fun configureView() {
         configureForm()
-        configureSpinner()
+        configureSpinner(binding.reservasSpinnerEspacios, arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1"))
+        configureSpinner(binding.reservasSpinnerEventos, arrayOf("Selecciona un evento", "MotoGP 2023", "Formula1 2023", "Coches locos Tournament"))
         configureCalendarView()
         configureMaterialCalendar()
+        configureNetwork()
+        configureSubmitBtn()
     }
+
+    private fun configureSubmitBtn() {
+        val date = Date()
+        val reserva = Reserva(1, "formula1" , date, "funcionando")
+        binding.reservasBtnSubmit.setOnClickListener{
+            viewModel.enviarReserva(reserva)
+        }
+    }
+
+
+    private fun configureNetwork() {
+        viewModel.loading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.reservasTvUserinfo.text = "Espera un moment, estem processant la teva resposta"
+                binding.reservasTvUserinfo.visibility = View.VISIBLE
+
+            } else{
+                binding.reservasTvUserinfo.visibility = View.GONE
+                if(viewModel.getRequestState()){
+                    binding.reservasTvUserinfo.text = viewModel.getDetallesReserva()[1]
+                    binding.reservasTvUserinfo.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
 
     private fun configureForm() {
         ed_changecolor_onfocus(binding.reservasEdEmail, R.color.primary_color, R.color.light_gray)
@@ -101,10 +144,7 @@ class FormularioActivity : AppCompatActivity() {
     }
 
 
-    private fun configureSpinner() {
-        val spinner = binding.reservasSpinnerEspacios
-        val items =
-            arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
+    private fun configureSpinner(spinner: Spinner, items : Array<String>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter

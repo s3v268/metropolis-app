@@ -22,7 +22,6 @@ class EspaciosViewModel : ViewModel() {
                 _espacios.value = emptyList()
             }
         }
-
     }
 }
 

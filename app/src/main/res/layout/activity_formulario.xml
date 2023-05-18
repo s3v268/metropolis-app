@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/reservas_img_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/logo_hort_negativo_color"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -28,7 +28,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!--GUIDELINES-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+        <!--GUIDELINES-->
 
+
+        <!--FORMULARIO-->
+        <LinearLayout
+            android:id="@+id/reservas_layout_eventos"
+            style="@style/st_custom_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/reservas_icon_eventos"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_flag" />
+
+            <Spinner
+                android:id="@+id/reservas_spinner_eventos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:textColorHint="@color/light_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+        </LinearLayout>
         <EditText
             android:id="@+id/reservas_ed_email"
             style="@style/st_custom_ed"
@@ -38,8 +78,7 @@
             android:hint="Email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@id/reservas_layout_eventos" />
         <EditText
             android:id="@+id/reservas_ed_companyname"
             style="@style/st_custom_ed"
@@ -50,7 +89,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reservas_ed_email" />
-
         <LinearLayout
             android:id="@+id/reservas_layout_espacios"
             style="@style/st_custom_ed"
@@ -81,125 +119,6 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/reservas_layout_asistentes"
-            style="@style/st_custom_ed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x3"
-            android:layout_marginHorizontal="@dimen/x1"
-            android:minHeight="48dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
-
-            <ImageView
-                android:id="@+id/reservas_icon_asistentes"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:paddingEnd="@dimen/x1"
-                android:src="@drawable/ic_person" />
-
-            <EditText
-                android:id="@+id/reservas_ed_asistentes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x1"
-                android:layout_marginRight="@dimen/x1"
-                android:hint="Assistents"
-                android:minWidth="50dp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/reservas_layout_staffpass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/x1"
-            android:minHeight="48dp"
-            android:layout_marginTop="@dimen/x3"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_asistentes">
-
-            <CheckBox
-                android:id="@+id/reservas_check_staffpass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Staff Pass" />
-
-            <EditText
-                android:id="@+id/reservas_ed_staffpass"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x1"
-                android:hint="nº"
-                android:minWidth="60dp"
-                android:maxWidth="60dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/reservas_layout_buspass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x1"
-            android:layout_marginTop="@dimen/x3"
-            android:layout_marginHorizontal="@dimen/x1"
-            android:minHeight="48dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
-
-            <CheckBox
-                android:id="@+id/reservas_check_buspass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bus Pass" />
-
-            <EditText
-                android:id="@+id/reservas_ed_buspass"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x1"
-                android:hint="nº"
-                android:minWidth="60dp"
-                android:maxWidth="60dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/reservas_layout_parkingpass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/x1"
-            android:layout_marginTop="@dimen/x3"
-            android:minHeight="48dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_buspass">
-
-            <CheckBox
-                android:id="@+id/reservas_check_parkingpass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Parking pass" />
-
-            <EditText
-                android:id="@+id/reservas_ed_parkingpass"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x1"
-                android:hint="nº"
-                android:minWidth="60dp"
-                android:maxWidth="60dp" />
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/reservas_layout_datepicker"
             style="@style/st_custom_ed"
@@ -269,14 +188,120 @@
                 android:src="@drawable/ic_edit" />
 
         </LinearLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/reservas_layout_asistentes"
+            style="@style/st_custom_ed"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
 
+            <ImageView
+                android:id="@+id/reservas_icon_asistentes"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/x1"
+                android:src="@drawable/ic_person" />
+
+            <EditText
+                android:id="@+id/reservas_ed_asistentes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:layout_marginRight="@dimen/x1"
+                android:hint="Assistents"
+                android:minWidth="50dp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/reservas_layout_buspass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x1"
+            android:layout_marginTop="@dimen/x3"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_datepicker">
+
+            <CheckBox
+                android:id="@+id/reservas_check_buspass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bus Pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_buspass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/reservas_layout_staffpass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:minHeight="48dp"
+            android:layout_marginTop="@dimen/x3"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_asistentes">
+
+            <CheckBox
+                android:id="@+id/reservas_check_staffpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff Pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_staffpass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/reservas_layout_parkingpass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/x1"
+            android:layout_marginTop="@dimen/x3"
+            android:minHeight="48dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/reservas_layout_buspass">
+
+            <CheckBox
+                android:id="@+id/reservas_check_parkingpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parking pass" />
+
+            <EditText
+                android:id="@+id/reservas_ed_parkingpass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x1"
+                android:hint="nº"
+                android:minWidth="60dp"
+                android:maxWidth="60dp" />
+        </LinearLayout>
         <Button
             android:id="@+id/reservas_btn_submit"
             android:layout_width="200dp"
@@ -287,6 +312,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reservas_layout_parkingpass" />
+        <!--FORMULARIO-->
+
+        <!--ERROR MESSAGE-->
+        <TextView
+            android:id="@+id/reservas_tv_userinfo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:text=""
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
