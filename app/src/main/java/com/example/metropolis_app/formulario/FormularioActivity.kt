@@ -13,7 +13,6 @@ import androidx.annotation.ColorRes
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
 import com.example.metropolis_app.models.Reserva
 import com.google.android.material.datepicker.MaterialDatePicker
-import okhttp3.internal.format
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -44,7 +43,7 @@ class FormularioActivity : AppCompatActivity() {
         val currentDate = Date()
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val formattedDate = formatter.format(currentDate)
-        val reserva = Reserva("formula", "@policia", "mycompany","myspace", formattedDate, formattedDate)
+        val reserva = Reserva("formula", "@policia", "mycompany","myspace", formattedDate, formattedDate, 4, 3, 2, 1, true)
         binding.reservasBtnSubmit.setOnClickListener{
             viewModel.enviarReserva(reserva)
         }
