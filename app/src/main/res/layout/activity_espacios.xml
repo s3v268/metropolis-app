@@ -9,21 +9,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEspacios"
         android:layout_width="match_parent"
-        android:layout_height="633dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/reservas_img_logo"
         app:spanCount="2"
-        tools:layout_editor_absoluteX="-16dp" />
+        tools:layout_editor_absoluteX="32dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/reservas_img_logo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Espacios"
-        android:textSize="30sp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo_hort_negativo_color"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -10,8 +10,8 @@ import com.example.metropolis_app.models.Espacio
 
  class EspaciosAdapter(
     var espacios: List<Espacio> = emptyList(),
-    private val mContext: Context,/*
-    private val onItemClicked: (Espacio) -> Unit*/
+    private val mContext: Context,
+    private val onItemClicked: (Espacio) -> Unit
 ) : RecyclerView.Adapter<EspaciosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EspaciosViewHolder {
@@ -29,7 +29,7 @@ import com.example.metropolis_app.models.Espacio
 
 
         //para capturar el click en el elemento
-        //viewHolder.itemView.setOnClickListener { onItemClicked(espacio) }
+        viewHolder.itemView.setOnClickListener { onItemClicked(espacio) }
 
     }
 

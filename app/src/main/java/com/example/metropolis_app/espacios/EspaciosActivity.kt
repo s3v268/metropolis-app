@@ -1,11 +1,14 @@
 package com.example.metropolis_app.espacios
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.metropolis_app.R
 import com.example.metropolis_app.databinding.ActivityEspaciosBinding
+import com.example.metropolis_app.espacio_detalle.EspacioDetalleActivity
 import com.example.metropolis_app.models.Espacio
+import com.google.android.material.snackbar.Snackbar
 
 import org.json.JSONArray
 import org.json.JSONObject
@@ -17,7 +20,8 @@ class EspaciosActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEspaciosBinding
 
     // Creamos el adapter del recyclerView
-    private val adapter = EspaciosAdapter(emptyList(),this)
+    private val adapter = EspaciosAdapter(emptyList(),this) {onItemClicked(it)}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +44,16 @@ class EspaciosActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
+    }
 
 
+    private fun onItemClicked(it: Espacio) {
+        Snackbar.make(binding.root, "Espacio ${it.nombre}", Snackbar.LENGTH_LONG).show()
 
 
-
-
-
-
+        val intent = Intent(this, EspacioDetalleActivity::class.java)
+        intent.putExtra("espacio", it)
+        startActivity(intent)
 
 
     }
