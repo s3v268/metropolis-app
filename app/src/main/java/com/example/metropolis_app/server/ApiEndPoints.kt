@@ -11,6 +11,6 @@ interface ApiEndPoints {
     @GET("cliente/espacios")
     suspend fun listEspacios(): Response <List<Espacio>>
 
-    @POST("reservas/create")
+    @POST("reservas")
     suspend fun enviarReserva(@Body reserva: Reserva) : Response<Array<String>>
 }

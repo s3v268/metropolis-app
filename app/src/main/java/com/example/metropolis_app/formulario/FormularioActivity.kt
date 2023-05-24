@@ -2,35 +2,18 @@ package com.example.metropolis_app.formulario
 
 import com.example.metropolis_app.R
 import android.app.DatePickerDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.ColorRes
-import androidx.lifecycle.ViewModelProvider
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
-import com.example.metropolis_app.espacios.EspaciosActivity
 import com.example.metropolis_app.models.Reserva
-import com.example.metropolis_app.server.ApiConnection
-import com.example.metropolis_app.server.ApiConnection.service
 import com.google.android.material.datepicker.MaterialDatePicker
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
-import java.io.IOException
 import java.util.Calendar
-import java.util.Date
 
 class FormularioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormularioBinding
@@ -55,8 +38,7 @@ class FormularioActivity : AppCompatActivity() {
     }
 
     private fun configureSubmitBtn() {
-        val date = Date()
-        val reserva = Reserva(1, "formula1" , date, "funcionando")
+        val reserva = Reserva("formula", "@policia", "mycompany","myspace")
         binding.reservasBtnSubmit.setOnClickListener{
             viewModel.enviarReserva(reserva)
         }

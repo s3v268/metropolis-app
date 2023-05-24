@@ -4,12 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
 import com.example.metropolis_app.server.ApiConnection
 import kotlinx.coroutines.launch
-import java.io.IOException
-import java.util.Date
 
 class FormularioViewModel : ViewModel() {
     private var detalles_reserva = emptyArray<String>()
@@ -18,7 +15,7 @@ class FormularioViewModel : ViewModel() {
     val loading: LiveData<Boolean> get() = _loading
 
 
-    fun enviarReserva(reserva:Reserva) {
+    fun enviarReserva(reserva: Reserva) {
         viewModelScope.launch {
             _loading.value = true
             requestCompleted = false

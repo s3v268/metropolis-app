@@ -17,9 +17,9 @@ data class Reserva(
     var fecha_final: Date,
 
     */
-    var id_espacio: Int = 0,
-    var event : String = "",
-    var day : Date,
-    var estado : String = "denegado"
+    var event: String,
+    var email : String,
+    var company_name: String,
+    var space : String,
 
 )
