@@ -10,5 +10,6 @@ data class Espacio(
     var capacidad: Int = 0,
     var disponibilidad: Boolean = false,
     var id: Int = 0,
-    var nombre: String = ""
+    var nombre: String = "",
+    var imagen_url: String = ""
 ): Parcelable
