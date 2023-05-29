@@ -43,7 +43,7 @@ class FormularioActivity : AppCompatActivity() {
         val currentDate = Date()
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val formattedDate = formatter.format(currentDate)
-        val reserva = Reserva("formula", "@policia", "mycompany","myspace", formattedDate, formattedDate, 4, 3, 2, 1, true)
+        val reserva = Reserva("formula", "@policia", "mycompany","myspace", formattedDate, formattedDate, 4, 3, 2, 1,"pendiente")
         binding.reservasBtnSubmit.setOnClickListener{
             viewModel.enviarReserva(reserva)
         }

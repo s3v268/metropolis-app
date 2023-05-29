@@ -11,5 +11,5 @@ data class Reserva(
     var n_bus_pass: Int,
     var n_staff_pass: Int,
     var n_parking_pass: Int,
-    var accepted: Boolean
+    var accepted: String
 )
