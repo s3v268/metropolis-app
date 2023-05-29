@@ -2,8 +2,10 @@ package com.example.metropolis_app.espacio_detalle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.metropolis_app.R
 import com.example.metropolis_app.databinding.ActivityEspacioDetalleBinding
+import com.example.metropolis_app.models.Espacio
 
 class EspacioDetalleActivity : AppCompatActivity() {
 
@@ -16,6 +18,20 @@ class EspacioDetalleActivity : AppCompatActivity() {
         _binding = ActivityEspacioDetalleBinding.inflate(layoutInflater)
         setContentView(_binding!!.root)
 
+        val espacio = intent.getParcelableExtra<Espacio>("espacio")
+
+        _binding!!.tvNombre.text = espacio?.nombre
+
+        _binding!!.tvDescripcion.text =
+            "¡Reserva ahora tu espacio en el circuito de Catalunya! Disponemos de un " +
+                    "increíble lugar con capacidad para ${espacio?.capacidad} personas y un área " +
+                    "de ${espacio?.area} metros cuadrados. ¡No pierdas la oportunidad y asegura tu reserva hoy mismo!"
+
+        //glide
+        Glide.with(this)
+            .load(espacio?.imagen_url)
+
+            .into(_binding!!.imgEspacio)
 
     }
 }

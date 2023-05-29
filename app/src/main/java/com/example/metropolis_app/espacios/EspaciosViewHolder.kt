@@ -18,8 +18,8 @@ class EspaciosViewHolder(val view: View, val mContext: Context) : RecyclerView.V
 
     fun bind(espacio: Espacio) {
         binding.tvNombre.text = espacio.nombre
-        binding.tvArea.text = espacio.area.toString()
-        binding.tvCapacidad.text = espacio.capacidad.toString()
+        binding.tvArea.text = espacio.area.toString() + " m2"
+        binding.tvCapacidad.text = espacio.capacidad.toString() + " personas"
 
         //glide
         Glide.with(mContext)

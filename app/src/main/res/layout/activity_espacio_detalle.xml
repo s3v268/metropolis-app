@@ -10,22 +10,21 @@
         android:id="@+id/reservas_img_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
         android:src="@drawable/logo_hort_negativo_color"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgEspacio"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reservas_img_logo"
         tools:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -36,34 +35,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Nombre"
-        android:textSize="20sp"
         android:textColor="@color/black"
+        android:textSize="@dimen/x5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgEspacio" />
 
     <TextView
-        android:id="@+id/tvArea"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvDescripcion"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Capacidad"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCapacidad" />
-
-    <TextView
-        android:id="@+id/tvCapacidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
         android:layout_marginTop="8dp"
-        android:text="Área"
+        android:padding="@dimen/x1"
+        android:text="Descripcion"
+        android:textAlignment="center"
         android:textColor="@color/black"
+
+        android:textSize="@dimen/x2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
@@ -71,12 +62,11 @@
         android:id="@+id/btnReservar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="88dp"
         android:backgroundTint="@color/primary_color"
         android:text="RESERVAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvArea" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
