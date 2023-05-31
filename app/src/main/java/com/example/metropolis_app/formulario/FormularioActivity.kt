@@ -49,6 +49,13 @@ class FormularioActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkForm() {
+        val spinnerEventosValue : String? = null
+        val spinnerEspaciosValue : String? = null
+
+    }
+        //if (binding.reservasSpinnerEventos.selectedItemPosition != 0)
+
 
     private fun configureNetwork() {
         viewModel.loading.observe(this) { isLoading ->

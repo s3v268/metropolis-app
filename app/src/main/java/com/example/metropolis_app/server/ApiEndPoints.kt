@@ -7,7 +7,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiEndPoints {
-    @GET("cliente/espacios")
+    @GET("espacios")
     suspend fun listEspacios(): Response <List<Espacio>>
 
     @POST("reservas")

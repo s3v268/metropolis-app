@@ -1,5 +1,6 @@
 package com.example.metropolis_app.server
 
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,10 +19,7 @@ object ApiConnection {
                     .build()
                 chain.proceed(request)
             }
-
-
             .build()
-
     }
 
     private val builder = Retrofit.Builder()
