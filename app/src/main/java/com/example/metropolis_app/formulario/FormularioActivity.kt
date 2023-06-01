@@ -2,6 +2,7 @@ package com.example.metropolis_app.formulario
 
 import com.example.metropolis_app.R
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
+import com.example.metropolis_app.home.HomeActivity
 import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -78,6 +80,9 @@ class FormularioActivity : AppCompatActivity() {
         )
         binding.reservasBtnSubmit.setOnClickListener {
             viewModel.enviarReserva(reserva)
+
+            startActivity(Intent(this, HomeActivity ::class.java))
+
         }
     }
 
