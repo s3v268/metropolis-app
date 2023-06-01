@@ -25,10 +25,19 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reservas_img_logo"
-        app:layout_constraintVertical_bias="0.0"
-        app:spanCount="2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESERVAS"
+        android:layout_margin="10dp"
+        android:textSize="@dimen/x5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reservas_img_logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
