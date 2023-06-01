@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
+import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
@@ -30,6 +31,7 @@ class FormularioActivity : AppCompatActivity() {
     }
 
     private fun configureView() {
+        val espacio = intent.getParcelableExtra<Espacio>("espacio")
         configureForm()
         configureSpinner(binding.reservasSpinnerEspacios, arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1"))
         configureSpinner(binding.reservasSpinnerEventos, arrayOf("Selecciona un evento", "MotoGP 2023", "Formula1 2023", "Coches locos Tournament"))
