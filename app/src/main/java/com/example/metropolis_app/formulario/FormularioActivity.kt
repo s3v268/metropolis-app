@@ -4,6 +4,7 @@ import com.example.metropolis_app.R
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -21,84 +22,77 @@ import java.util.Date
 class FormularioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormularioBinding
     private lateinit var viewModel: FormularioViewModel
-    lateinit var espacio: Espacio
+    private lateinit var espacioSelected : Espacio
+    private var arrayEventos : Array<String> = arrayOf("Selecciona un evento", "Formula 1 2023", "MotoGP 2023")
+    private lateinit var startDate : String
+    private lateinit var endDate : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
         viewModel = FormularioViewModel()
         setContentView(binding.root)
 
-
-        //Con esto obtenemos el objeto Espacio que hemos pasado desde la activity detalle
-        // val espacio = intent.getParcelableExtra<Espacio>("espacio")
-        espacio = intent.getParcelableExtra<Espacio>("espacio")!!
-
         configureView()
     }
 
     private fun configureView() {
-        val espacio = intent.getParcelableExtra<Espacio>("espacio")
+        //espacioSelected = intent.getParcelableExtra<Espacio>("espacio")!!
         configureForm()
-        configureSpinner(
-            binding.reservasSpinnerEspacios,
-            arrayOf(espacio!!.nombre)
-        )
-        configureSpinner(
-            binding.reservasSpinnerEventos,
-            arrayOf(
-                "Selecciona un evento",
-                "MotoGP 2023",
-                "Formula1 2023",
-                "Coches locos Tournament"
-            )
-        )
+        //configureSpinner(binding.reservasSpinnerEspacios, arrayOf(espacioSelected.nombre))
+        configureSpinner(binding.reservasSpinnerEspacios, arrayOf("espacio"))
+        configureSpinner(binding.reservasSpinnerEventos, arrayEventos)
         configureCalendarView()
         configureMaterialCalendar()
         configureNetwork()
-        configureSubmitBtn(espacio)
+        configureSubmitBtn()
     }
 
-    private fun configureSubmitBtn(espacio: Espacio) {
-
-        val currentDate = Date()
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val formattedDate = formatter.format(currentDate)
-        val reserva = Reserva(
-            binding.reservasSpinnerEventos.selectedItem.toString(),
-            binding.reservasEdEmail.text.toString(),
-            binding.reservasEdCompanyname.text.toString(),
-            espacio.nombre.toString(),
-            formattedDate,
-            formattedDate,
-            4,
-            3,
-            2,
-            1,
-            "pendiente"
-        )
-        binding.reservasBtnSubmit.setOnClickListener {
-            viewModel.enviarReserva(reserva)
+    private fun configureSubmitBtn() {
+        binding.reservasBtnSubmit.setOnClickListener{
+            viewModel.enviarReserva(getReserva())
         }
     }
 
+    private fun getReserva() : Reserva {
+        var event : String = arrayEventos[binding.reservasSpinnerEventos.selectedItemPosition]
+        var email : String = binding.reservasEdEmail.text.toString()
+        var companyName : String = binding.reservasEdCompanyname.text.toString()
+        var n_attendees : Int = binding.reservasEdAsistentes.text.toString().toInt()
+        var n_bus_passes : Int = binding.reservasEdBuspass.text.toString().toInt()
+        var n_staff_pass : Int = binding.reservasEdStaffpass.text.toString().toInt()
+        var n_parking_pass : Int = binding.reservasEdParkingpass.text.toString().toInt()
+        var reserva = Reserva(
+            event = event,
+            email = email,
+            company_name = companyName,
+            space = "ghggh",
+            startDate,
+            endDate,
+            n_attendees,
+            n_bus_passes,
+            n_staff_pass,
+            n_parking_pass,
+            "pendiente")
+        return reserva
+    }
+
     private fun checkForm() {
-        val spinnerEventosValue: String? = null
-        val spinnerEspaciosValue: String? = null
+        val spinnerEventosValue : String? = null
+        val spinnerEspaciosValue : String? = null
 
     }
-    //if (binding.reservasSpinnerEventos.selectedItemPosition != 0)
+        //if (binding.reservasSpinnerEventos.selectedItemPosition != 0)
 
 
     private fun configureNetwork() {
         viewModel.loading.observe(this) { isLoading ->
             if (isLoading) {
-                binding.reservasTvUserinfo.text =
-                    "Espera un moment, estem processant la teva resposta"
+                binding.reservasTvUserinfo.text = "Espera un moment, estem processant la teva resposta"
                 binding.reservasTvUserinfo.visibility = View.VISIBLE
 
-            } else {
+            } else{
                 binding.reservasTvUserinfo.visibility = View.GONE
-                if (viewModel.getRequestState()) {
+                if(viewModel.getRequestState()){
                     binding.reservasTvUserinfo.text = viewModel.getDetallesReserva()[1]
                     binding.reservasTvUserinfo.visibility = View.VISIBLE
                 }
@@ -109,11 +103,7 @@ class FormularioActivity : AppCompatActivity() {
 
     private fun configureForm() {
         ed_changecolor_onfocus(binding.reservasEdEmail, R.color.primary_color, R.color.light_gray)
-        ed_changecolor_onfocus(
-            binding.reservasEdCompanyname,
-            R.color.primary_color,
-            R.color.light_gray
-        )
+        ed_changecolor_onfocus(binding.reservasEdCompanyname, R.color.primary_color, R.color.light_gray)
     }
 
     private fun spinner_changecolor_onfocus(
@@ -155,6 +145,13 @@ class FormularioActivity : AppCompatActivity() {
 
         binding.reservasLayoutDatepicker.setOnClickListener {
             picker.show(this.supportFragmentManager!!, picker.toString())
+            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            picker.addOnPositiveButtonClickListener { selection ->
+                startDate = formatter.format(selection.first)
+                endDate = formatter.format(selection.second)
+
+                // Use the start and end dates as needed
+            }
         }
 
 
@@ -175,7 +172,7 @@ class FormularioActivity : AppCompatActivity() {
     }
 
 
-    private fun configureSpinner(spinner: Spinner, items: Array<String>) {
+    private fun configureSpinner(spinner: Spinner, items : Array<String>) {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter

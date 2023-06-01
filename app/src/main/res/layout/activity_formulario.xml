@@ -311,6 +311,7 @@
             android:layout_marginTop="@dimen/x3"
             android:layout_marginRight="@dimen/x3"
             android:text="hacer reserva"
+            app:backgroundTint="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reservas_layout_parkingpass" />
