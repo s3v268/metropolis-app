@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/x7"
-        android:paddingVertical="@dimen/x3"
+        android:paddingVertical="@dimen/x2"
         android:text="@string/home_tv_description"
         android:textSize="18sp"
         android:textColor="@color/dark_gray"
@@ -58,31 +58,29 @@
 
     <Button
         android:id="@+id/home_btn_reservas"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:minHeight="60dp"
-        android:layout_marginLeft="@dimen/x4"
-        android:layout_marginRight="@dimen/x3"
-        android:layout_marginBottom="@dimen/x5"
-        app:backgroundTint= "@color/primary_color"
+        android:minWidth="150dp"
         android:text="@string/home_btn_misreservas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vt_50"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:backgroundTint="@color/primary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBtnPerfil" />
 
     <Button
         android:id="@+id/home_btn_espacios"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:minHeight="80dp"
-        android:layout_marginLeft="@dimen/x3"
-        android:layout_marginRight="@dimen/x4"
-        android:layout_marginBottom="@dimen/x5"
-        app:backgroundTint= "@color/primary_color"
+
+        android:minHeight="60dp"
+        android:minWidth="150dp"
+        android:maxWidth="150dp"
         android:text="@string/home_btn_reservarespacio"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/primary_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vt_50" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_btn_reservas" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -104,10 +102,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
+        android:minWidth="150dp"
+        android:minHeight="60dp"
         android:text="Perfil"
         app:backgroundTint="@color/primary_color"
         app:layout_constraintBottom_toTopOf="@+id/home_btn_espacios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_tv_description"
+        app:layout_constraintVertical_bias="0.225" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
