@@ -15,6 +15,7 @@ import com.example.metropolis_app.databinding.ActivityFormularioBinding
 import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -26,6 +27,9 @@ class FormularioActivity : AppCompatActivity() {
     private var arrayEventos : Array<String> = arrayOf("Selecciona un evento", "Formula 1 2023", "MotoGP 2023")
     private lateinit var startDate : String
     private lateinit var endDate : String
+    private var bus_pass_n : String = "0"
+    private var staff_pass_n : String = "0"
+    private var parking_pass_n : String = "0"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormularioBinding.inflate(layoutInflater)
@@ -49,18 +53,73 @@ class FormularioActivity : AppCompatActivity() {
 
     private fun configureSubmitBtn() {
         binding.reservasBtnSubmit.setOnClickListener{
-            viewModel.enviarReserva(getReserva())
+            if(checkEvent()){
+                if(checkRequired()){
+                    checkOptional()
+                    if(getReserva().n_attendees == 0){
+                        val snackbar = Snackbar.make(binding.formularioParentlayout, "El camp asistents ha de tenir un valor numèric superior a 1", Snackbar.LENGTH_LONG)
+                        snackbar.show()
+                    }else{
+                        viewModel.enviarReserva(getReserva())
+                    }
+                }else{
+                    val snackbar = Snackbar.make(binding.formularioParentlayout, "No has omplert camps obligatoris", Snackbar.LENGTH_LONG)
+                    snackbar.show()
+                }
+
+            }else {
+                val snackbar = Snackbar.make(binding.formularioParentlayout, "No has seleccionat cap event", Snackbar.LENGTH_LONG)
+                snackbar.show()
+            }
+
         }
+    }
+
+    private fun checkOptional(): Boolean {
+        if (isStringNumeric(binding.reservasEdBuspass.text.toString())){
+            bus_pass_n =  binding.reservasEdBuspass.text.toString()
+            return true
+        }else{return true}
+
+        if (isStringNumeric(binding.reservasEdStaffpass.text.toString())){
+            staff_pass_n =  binding.reservasEdStaffpass.text.toString()
+            return true
+        }else{return true}
+
+        if (isStringNumeric(binding.reservasEdParkingpass.text.toString())){
+            parking_pass_n =  binding.reservasEdParkingpass.text.toString()
+            return true
+        }else{return true}
+    }
+
+    private fun checkRequired(): Boolean {
+        if(binding.reservasEdEmail.text.toString().isNullOrEmpty()){
+            binding.reservasEdEmail.setHintTextColor((getColor(R.color.primary_color)))
+            return false
+        }else if(binding.reservasEdCompanyname.text.toString().isNullOrEmpty()){
+            binding.reservasEdCompanyname.setHintTextColor((getColor(R.color.primary_color)))
+            return false
+        } else return true
+    }
+
+    fun isStringNumeric(input: String): Boolean {
+        val numericRegex = Regex("^\\d+$")
+        return numericRegex.matches(input)
+    }
+    private fun checkEvent(): Boolean {
+        return binding.reservasSpinnerEventos.selectedItemPosition != 0
     }
 
     private fun getReserva() : Reserva {
         var event : String = arrayEventos[binding.reservasSpinnerEventos.selectedItemPosition]
         var email : String = binding.reservasEdEmail.text.toString()
         var companyName : String = binding.reservasEdCompanyname.text.toString()
-        var n_attendees : Int = binding.reservasEdAsistentes.text.toString().toInt()
-        var n_bus_passes : Int = binding.reservasEdBuspass.text.toString().toInt()
-        var n_staff_pass : Int = binding.reservasEdStaffpass.text.toString().toInt()
-        var n_parking_pass : Int = binding.reservasEdParkingpass.text.toString().toInt()
+        var attendees : String = binding.reservasEdAsistentes.text.toString()
+        var n_attendees : Int
+        if (isStringNumeric(attendees)){
+            n_attendees = attendees.toInt()
+        }else{ n_attendees = 0}
+
         var reserva = Reserva(
             event = event,
             email = email,
@@ -69,9 +128,9 @@ class FormularioActivity : AppCompatActivity() {
             startDate,
             endDate,
             n_attendees,
-            n_bus_passes,
-            n_staff_pass,
-            n_parking_pass,
+            bus_pass_n.toInt(),
+            staff_pass_n.toInt(),
+            parking_pass_n.toInt(),
             "pendiente")
         return reserva
     }
@@ -145,12 +204,12 @@ class FormularioActivity : AppCompatActivity() {
 
         binding.reservasLayoutDatepicker.setOnClickListener {
             picker.show(this.supportFragmentManager!!, picker.toString())
-            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val formatter = SimpleDateFormat("yyyy-MM-dd")
             picker.addOnPositiveButtonClickListener { selection ->
                 startDate = formatter.format(selection.first)
                 endDate = formatter.format(selection.second)
-
-                // Use the start and end dates as needed
+                binding.reservasTvStartdate.text = startDate
+                binding.reservasTvLastdate.text = endDate
             }
         }
 
