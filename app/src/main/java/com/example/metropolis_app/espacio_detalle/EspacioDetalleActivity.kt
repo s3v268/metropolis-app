@@ -1,10 +1,12 @@
 package com.example.metropolis_app.espacio_detalle
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.metropolis_app.R
 import com.example.metropolis_app.databinding.ActivityEspacioDetalleBinding
+import com.example.metropolis_app.formulario.FormularioActivity
 import com.example.metropolis_app.models.Espacio
 
 class EspacioDetalleActivity : AppCompatActivity() {
@@ -32,6 +34,20 @@ class EspacioDetalleActivity : AppCompatActivity() {
             .load(espacio?.imagen_url)
 
             .into(_binding!!.imgEspacio)
+
+
+      _binding!!.btnReservar.setOnClickListener {
+          openFormularioReserva(espacio!!)
+      }
+
+    }
+
+    fun openFormularioReserva(espacio: Espacio ) {
+        val intent = Intent(this, FormularioActivity::class.java)
+
+        intent.putExtra("espacio",espacio)
+        this.startActivity(intent)
+
 
     }
 }

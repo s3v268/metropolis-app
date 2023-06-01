@@ -2,6 +2,7 @@ package com.example.metropolis_app.server
 
 import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
+import com.example.metropolis_app.models.ReservaV2
 
 import retrofit2.Response
 import retrofit2.http.*
@@ -17,5 +18,5 @@ interface ApiEndPoints {
     //suspend fun listReservas(@Query("email") email: String): Response<List<Reserva>>
 
     @GET("reservas/{email}")
-    suspend fun listReservas(@Path("email") email: String): Response<List<Reserva>>
+    suspend fun listReservas(@Path("email") email: String): Response<List<ReservaV2>>
 }
