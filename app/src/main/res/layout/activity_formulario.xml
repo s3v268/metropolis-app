@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/formulario_parentlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_color"
@@ -311,6 +312,7 @@
             android:layout_marginTop="@dimen/x3"
             android:layout_marginRight="@dimen/x3"
             android:text="hacer reserva"
+            app:backgroundTint="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reservas_layout_parkingpass" />
