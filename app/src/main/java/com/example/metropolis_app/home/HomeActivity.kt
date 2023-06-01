@@ -14,6 +14,7 @@ import com.example.metropolis_app.databinding.ActivityHomeBinding
 import com.example.metropolis_app.espacios.EspaciosActivity
 import com.example.metropolis_app.formulario.FormularioActivity
 import com.example.metropolis_app.perfil.PerfilActivity
+import com.example.metropolis_app.reservas.ReservasActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -32,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun configureView() {
         binding.homeBtnReservas.setOnClickListener{
-            startActivity(Intent(this, FormularioActivity ::class.java))
+            startActivity(Intent(this, ReservasActivity ::class.java))
 
         }
         binding.homeBtnEspacios.setOnClickListener{

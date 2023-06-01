@@ -9,7 +9,7 @@ import com.example.metropolis_app.server.ApiConnection
 import kotlinx.coroutines.launch
 
 class EspaciosViewModel : ViewModel() {
-    // El List de películas que devuelve la ApiRest
+    // El List de espacios que devuelve la ApiRest
     private val _espacios = MutableLiveData<List<Espacio>>(emptyList())
     val espacios: LiveData<List<Espacio>> get() = _espacios
 
