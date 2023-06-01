@@ -41,7 +41,7 @@ class FormularioActivity : AppCompatActivity() {
         configureForm()
         configureSpinner(
             binding.reservasSpinnerEspacios,
-            arrayOf("Selecciona un espacio", "Sala A", "Sala B", "Sala C", "Padock", "Sala Conf. 1")
+            arrayOf(espacio!!.nombre)
         )
         configureSpinner(
             binding.reservasSpinnerEventos,
@@ -55,18 +55,19 @@ class FormularioActivity : AppCompatActivity() {
         configureCalendarView()
         configureMaterialCalendar()
         configureNetwork()
-        configureSubmitBtn()
+        configureSubmitBtn(espacio)
     }
 
-    private fun configureSubmitBtn() {
+    private fun configureSubmitBtn(espacio: Espacio) {
+
         val currentDate = Date()
         val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
         val formattedDate = formatter.format(currentDate)
         val reserva = Reserva(
-            "formula",
-            "@policia",
-            "mycompany",
-            "myspace",
+            binding.reservasSpinnerEventos.selectedItem.toString(),
+            binding.reservasEdEmail.text.toString(),
+            binding.reservasEdCompanyname.text.toString(),
+            espacio.nombre.toString(),
             formattedDate,
             formattedDate,
             4,

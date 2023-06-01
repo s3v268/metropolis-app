@@ -15,7 +15,7 @@ object ApiConnection {
             // Agregar el interceptor de autenticación
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder() //Token CRUD Abdellah: ENi0FNrWWvZpaojRxmSVcYfIlPMtxWrlJqp3Y9Nu
-                    .header("Authorization", "Bearer " + "H1KQ9E7CMyWMcZxdN3y3I1VEm8Siphmj1CTPvxGm") //ingresar token de autenticación valido
+                    .header("Authorization", "Bearer " + "fhZw0ktWDCrPswWSx4lMEAxm788ezLmcipwrtsn2") //ingresar token de autenticación valido
                     .build()
                 chain.proceed(request)
             }
