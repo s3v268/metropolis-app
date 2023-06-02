@@ -1,6 +1,7 @@
 package com.example.metropolis_app.reservas
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,7 @@ class ReservasViewModel: ViewModel() {
             var response = ApiConnection.service.listReservas(email)
             if (response.isSuccessful) {
                 _reservas.value = response.body()
+                Log.d("ReservasViewModel", "loadReservas: ${response.body()}")
             } else {
                 _reservas.value = emptyList()
             }

@@ -2,6 +2,8 @@ package com.example.metropolis_app.formulario
 
 import com.example.metropolis_app.R
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +13,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import com.example.metropolis_app.databinding.ActivityFormularioBinding
+import com.example.metropolis_app.home.HomeActivity
 import com.example.metropolis_app.models.Espacio
 import com.example.metropolis_app.models.Reserva
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -40,6 +43,11 @@ class FormularioActivity : AppCompatActivity() {
 
     private fun configureView() {
         espacioSelected = intent.getParcelableExtra<Espacio>("espacio")!!
+
+        //con esto pongo el correo en el campo email por defecto
+        var email = getEmailFromSharedPreferences()
+        binding.reservasEdEmail.setText(email)
+
         configureForm()
         //configureSpinner(binding.reservasSpinnerEspacios, arrayOf(espacioSelected.nombre))
         configureSpinner(binding.reservasSpinnerEspacios, arrayOf(espacioSelected.nombre))
@@ -48,6 +56,19 @@ class FormularioActivity : AppCompatActivity() {
         configureMaterialCalendar()
         configureNetwork()
         configureSubmitBtn()
+    }
+
+    private fun abrirActivity() {
+
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+
+        // Finalizar la Activity actual
+        finish()
+    }
+    private fun getEmailFromSharedPreferences(): String? {
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString(HomeActivity.PREFS_EMAIL, null)
     }
 
     private fun configureSubmitBtn() {
@@ -64,6 +85,8 @@ class FormularioActivity : AppCompatActivity() {
                         snackbar.show()
                     } else {
                         viewModel.enviarReserva(getReserva())
+                        //Redirecciono a la pantalla de inicio
+                        abrirActivity()
                     }
                 } else {
                     val snackbar = Snackbar.make(
