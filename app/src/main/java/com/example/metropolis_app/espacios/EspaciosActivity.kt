@@ -48,7 +48,7 @@ class EspaciosActivity : AppCompatActivity() {
 
 
     private fun onItemClicked(it: Espacio) {
-        Snackbar.make(binding.root, "Espacio ${it.nombre}", Snackbar.LENGTH_LONG).show()
+       // Snackbar.make(binding.root, "Espacio ${it.nombre}", Snackbar.LENGTH_LONG).show()
 
 
         val intent = Intent(this, EspacioDetalleActivity::class.java)

@@ -26,13 +26,9 @@ class ReservasViewHolder(val view: View, val mContext: Context) : RecyclerView.V
 
         if (reserva.accepted.equals("Aceptada")) {
             binding.itemReserva.setBackgroundColor(greenColor); // Set background color to green        }
-
-
-
-
         }
-        if (reserva.accepted.equals("Denegada")) {
-            binding.itemReserva.setBackgroundColor( redColor); // Set background color to red
+        if (reserva.accepted.equals("Denegada") || reserva.accepted.equals("Cancelada")) {
+            binding.itemReserva.setBackgroundColor(redColor); // Set background color to red
         }
     }
 }

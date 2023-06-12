@@ -174,7 +174,7 @@ class FormularioActivity : AppCompatActivity() {
             bus_pass_n.toInt(),
             staff_pass_n.toInt(),
             parking_pass_n.toInt(),
-            "pendiente"
+            "Pendiente"
         )
         return reserva
     }
